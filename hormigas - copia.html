@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Organización de las Hormigas</title>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -102,10 +101,6 @@
     #resetButton {
       display: none;
     }
-    .music-controls {
-      text-align: center;
-      margin-bottom: 20px;
-    }
     @keyframes fadeInDown {
       from {
         opacity: 0;
@@ -135,12 +130,6 @@
 </head>
 <body>
   <h1>Descubre la Organización de las Hormigas</h1>
-  <!-- Background Music -->
-  <audio id="backgroundMusic" src="https://gaxupin.github.io/proyectohormiga/cancionhormigas.mp3" loop autoplay></audio>
-  <div class="music-controls">
-    <button id="playButton"><i class="fas fa-play"></i></button>
-    <button id="pauseButton"><i class="fas fa-pause"></i></button>
-  </div>
   <div class="container">
     <div class="ant-role" data-role="reina">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Camponotus_crispulus_queen_ant.jpg/640px-Camponotus_crispulus_queen_ant.jpg" alt="Reina">
@@ -165,13 +154,7 @@
   </div>
   <button id="resetButton">Volver a la Selección</button>
 
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const backgroundMusic = document.getElementById('backgroundMusic');
-      backgroundMusic.play();
-    });
-
     const roles = {
       reina: "La reina es la madre de todas las hormigas de la colonia. Su trabajo principal es poner huevos.",
       obrera: "Las obreras cuidan de la reina y las crías, construyen el hormiguero y buscan comida.",
@@ -182,9 +165,6 @@
     const resetButton = document.getElementById('resetButton');
     const videoContainer = document.getElementById('videoContainer');
     const descriptionElement = document.getElementById('description');
-    const backgroundMusic = document.getElementById('backgroundMusic');
-    const playButton = document.getElementById('playButton');
-    const pauseButton = document.getElementById('pauseButton');
 
     document.querySelectorAll('.ant-role').forEach(role => {
       role.addEventListener('click', () => {
@@ -205,8 +185,6 @@
           window.speechSynthesis.speak(utterance);
         }
         resetButton.style.display = 'inline-block';
-        // Pause background music when any button is clicked
-        backgroundMusic.pause();
       });
     });
 
@@ -215,16 +193,6 @@
       videoContainer.style.display = 'none';
       resetButton.style.display = 'none';
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Play background music
-    playButton.addEventListener('click', () => {
-      backgroundMusic.play();
-    });
-
-    // Pause background music
-    pauseButton.addEventListener('click', () => {
-      backgroundMusic.pause();
     });
   </script>
 </body>
