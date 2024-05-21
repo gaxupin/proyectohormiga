@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organización de las Hormigas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('https://www.toptal.com/designers/subtlepatterns/patterns/paper.png');
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 2.5em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .ant-role {
+      cursor: pointer;
+      display: inline-block;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 150px;
+      height: 150px;
+      background-color: #ffffff;
+    }
+    .ant-role:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .ant-role img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ant-role p {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.2em;
+      color: #34495e;
+      margin-top: 10px;
+    }
+    .description, .video-container {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #2c3e50;
+      background-color: #ecf0f1;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1s ease-in-out;
+      width: 90%;
+      max-width: 600px;
+    }
+    .description {
+      display: none;
+    }
+    .video-container {
+      display: none;
+      overflow: hidden;
+    }
+    .video-container iframe {
+      width: 100%;
+      height: 315px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-family: 'Roboto', sans-serif;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #e74c3c;
+      color: #fff;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    button:hover {
+      background-color: #c0392b;
+      transform: scale(1.05);
+    }
+    #resetButton {
+      display: none;
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 600px) {
+      .video-container iframe {
+        height: 56.25vw; /* Maintain 16:9 aspect ratio */
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Descubre la Organización de las Hormigas</h1>
+  <div class="container">
+    <div class="ant-role" data-role="reina">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Camponotus_crispulus_queen_ant.jpg/640px-Camponotus_crispulus_queen_ant.jpg" alt="Reina">
+      <p>Reina</p>
+    </div>
+    <div class="ant-role" data-role="obrera">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/A_Formica_rufa_sideview.jpg/640px-A_Formica_rufa_sideview.jpg" alt="Obrera">
+      <p>Obrera</p>
+    </div>
+    <div class="ant-role" data-role="soldado">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Carpenter_ant_Tanzania_crop.jpg/640px-Carpenter_ant_Tanzania_crop.jpg" alt="Soldado">
+      <p>Soldado</p>
+    </div>
+    <div class="ant-role" data-role="organizacion">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Leptogenys_laeviceps_20210822_011112_0696_D500_Yathumon_M_A.jpg/640px-Leptogenys_laeviceps_20210822_011112_0696_D500_Yathumon_M_A.jpg" alt="Organización">
+      <p>Organización</p>
+    </div>
+  </div>
+  <div id="description" class="description"></div>
+  <div id="videoContainer" class="video-container">
+    <iframe src="https://www.youtube.com/embed/Ai7K8kNZNUo" title="TRABAJO EN EQUIPO-Hormigas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <button id="resetButton">Volver a la Selección</button>
+
+  <script>
+    const roles = {
+      reina: "La reina es la madre de todas las hormigas de la colonia. Su trabajo principal es poner huevos.",
+      obrera: "Las obreras cuidan de la reina y las crías, construyen el hormiguero y buscan comida.",
+      soldado: "Los soldados protegen la colonia de los depredadores y otras amenazas.",
+      organizacion: ""
+    };
+
+    const resetButton = document.getElementById('resetButton');
+    const videoContainer = document.getElementById('videoContainer');
+    const descriptionElement = document.getElementById('description');
+
+    document.querySelectorAll('.ant-role').forEach(role => {
+      role.addEventListener('click', () => {
+        const selectedRole = role.getAttribute('data-role');
+        const description = roles[selectedRole];
+        if (selectedRole === 'organizacion') {
+          videoContainer.style.display = 'block';
+          descriptionElement.style.display = 'none';
+          videoContainer.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          videoContainer.style.display = 'none';
+          descriptionElement.textContent = description;
+          descriptionElement.style.display = 'block';
+          const utterance = new SpeechSynthesisUtterance(description);
+          utterance.lang = 'es-ES';
+          utterance.pitch = 2; // Más aguda, similar a la voz de una niña
+          utterance.rate = 1; // Velocidad normal
+          window.speechSynthesis.speak(utterance);
+        }
+        resetButton.style.display = 'inline-block';
+      });
+    });
+
+    resetButton.addEventListener('click', () => {
+      descriptionElement.style.display = 'none';
+      videoContainer.style.display = 'none';
+      resetButton.style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
